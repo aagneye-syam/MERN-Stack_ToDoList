@@ -17,12 +17,12 @@ function Home() {
       <h1>ToDo List</h1>
       <Create />
       {toDos.length === 0 ? (
-        <div>
+        <div className='task' >
           <h2>No record</h2>
         </div>
       ) : ( 
         toDos.map((toDo, index) => (
-          <div key={index}>{toDo.task}</div>
+          <div className='task' key={index}>{toDo.task}</div>
         ))
       )}
     </div>
