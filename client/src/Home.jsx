@@ -22,4 +22,4 @@ function Hook() {
   );
 }
 
-export default Hook;
+export default Home;
