@@ -20,7 +20,7 @@ function Home() {
   const handleEdit = (id) => {
     axios
       .put("http://localhost:3001/update/" + id)
-      .then((result) => console.log(result))
+      .then(() => location.reload())
       .catch((err) => console.log(err));
   };
 
