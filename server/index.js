@@ -31,6 +31,13 @@ app.put("/update/:id", (req, res) => {
     .catch((err) => res.json(err));
 });
 
+app.delete("/delete/:id", (req, res) => {
+  const { id } = req.params;
+  TodoModel.findByIdAndDelete({ _id: id })
+    .then((result) => res.json(result))
+    .catch((err) => res.json(err));
+});
+
 const PORT = 3001;
 
 app.listen(PORT, () => {
