@@ -1,7 +1,11 @@
 import React, { useEffect, useState } from "react";
 import Create from "./Create";
 import axios from "axios";
-import { BsCircleFill, BsFillTrashFill } from "react-icons/bs";
+import {
+  BsCircleFill,
+  BsFillCheckCircleFill,
+  BsFillTrashFill,
+} from "react-icons/bs";
 
 function Home() {
   const [toDos, setToDos] = useState([]);
@@ -13,13 +17,12 @@ function Home() {
       .catch((err) => console.log(err));
   }, []);
 
-  const handleEdit = (id)=>{
+  const handleEdit = (id) => {
     axios
-      .put("http://localhost:3001/update/"+id)
+      .put("http://localhost:3001/update/" + id)
       .then((result) => console.log(result))
       .catch((err) => console.log(err));
-  }
-
+  };
 
   return (
     <div>
@@ -32,8 +35,12 @@ function Home() {
       ) : (
         toDos.map((toDo, index) => (
           <div className="task" key={index}>
-            <div className="checkbox" onClick={() => handleEdit(toDo._ id)}>
-              <BsCircleFill className="icon" />
+            <div className="checkbox" onClick={() => handleEdit(toDo._id)}>
+              {toDo.done ? (
+                <BsFillCheckCircleFill className="icon" />
+              ) : (
+                <BsCircleFill className="icon" />
+              )}
               <p>{toDo.task}</p>
             </div>
             <div>
