@@ -41,7 +41,7 @@ function Home() {
               ) : (
                 <BsCircleFill className="icon" />
               )}
-              <p>{toDo.task}</p>
+              <p className={toDo.done ? "line_through" : ""}>{toDo.task}</p>
             </div>
             <div>
               <span>
