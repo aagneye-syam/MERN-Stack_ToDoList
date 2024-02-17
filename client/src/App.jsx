@@ -1,5 +1,5 @@
 import "./App.css";
-import Hook from "./Home";
+import Home from "./Home";
 
 function App() {
   return (

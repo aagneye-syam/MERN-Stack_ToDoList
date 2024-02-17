@@ -1,9 +1,16 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import Create from "./Create";
-import { useState } from "react";
+import axios from 'axios'
 
-function Hook() {
-  const [toDos, settoDos] = useState([]);
+function Home() {
+  const [toDos, setToDos] = useState([]);
+
+  useEffect(() => {
+    axios
+      .get('http://localhost:3001/get')
+      .then(result => setToDos(result.data))
+      .catch(err => console.log(err));
+  }, []);
 
   return (
     <div>
@@ -13,10 +20,10 @@ function Hook() {
         <div>
           <h2>No record</h2>
         </div>
-      ) : (
-        toDos.map((toDo) => {
-          <div>{todo}</div>;
-        })
+      ) : ( 
+        toDos.map((toDo, index) => (
+          <div key={index}>{toDo.task}</div>
+        ))
       )}
     </div>
   );
